@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Smile 😊</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		.cover{
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			max-width: 700px;
+			max-height: 700px;
+			transition: .6s;
+		}
+		.content{
+			width: 250px;
+			height: 250px;
+			background-color: orange;
+			border-radius: 50%;
+			position: relative;
+			box-shadow: 0 0 5px black;
+			overflow: hidden;
+		}
+		span{
+			position: absolute;
+			display: inline-block;
+			background-color: red;
+			border-radius: 50%;
+		}
+		.kanan,.kiri{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			transition: .7s;
+		}
+		.kiri{
+			left: 20%;
+			top: 25%;
+			transform-origin: center;
+			transform: rotate(p);
+		}
+		.kanan{
+			right: 20%;
+			top: 25%;
+			transform-origin: center;
+			transform: rotate(0);
+		}
+		.smile{
+			bottom: 20%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 150px;
+			height: 90px;
+			background-color: transparent ;
+			border-bottom: 25px solid red;
+			transition: .5s;
+			position: absolute;
+		}
+		.pil{
+			position: absolute;
+			bottom: 20%;
+			width: 300px;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.pil button{
+			padding: 2px 5px;
+			font-family: arial;
+			font-weight: bold ;
+			letter-spacing: 2px;
+			background-color: transparent;
+			border: 2px solid black;
+			border-radius: 5px;
+			transition: transform .7s;
+		}
+		.tanya{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: #313e41 ;
+			display: flex;
+			justify-content: center ;
+			align-items: center;
+			font-size: 7em;
+			font-weight: bold;
+			transition: .6s;
+			font-family: arial;
+		}
+		@media only screen and (min-width : 700px){
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center ;
+				height: 100vh;
+				width: 100%;
+			}
+			.cover{
+				border-radius: 20px;
+			}
+		}
+		h1{
+			position: absolute;
+			top: 10%;
+			width: 70%;
+			font-family: arial ;
+			font-weight: bold ;
+			font-size: 18px;
+			text-align: center;
+			letter-spacing: 2px;
+		}
+		audio{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<audio src="tiktok_smile.mp3" controls="" data-p="mati"></audio>
+	<div class="cover">
+    <h1>Apa kabarmu hari ini ..?</h1>
+		<div class="content">
+			<span class="kiri m"></span>
+			<span class="kanan m"></span>
+			<span class="smile"></span>
+			<div class="tanya">?</div>
+		</div>
+		<div class="pil">
+			<button onclick="f(this)" value="senyum">senyum</button>
+			<button onclick="f(this)" value="ragu">ragu</button>
+			<button onclick="f(this)" value="sedih">sedih</button>
+		</div>
+	</div>
+	
+	<script>
+	  const a = document.querySelector(".content .smile")
+	  const c = document.querySelectorAll(".content .m")
+	  const d = document.querySelector(".cover")
+	  const e = document.querySelector(".tanya")
+	  const g = document.querySelector("h1")
+	
+ let h = () => {
+		const audio = document.querySelector("audio")
+		if(audio.getAttribute("data-p") == "mati"){
+			audio.play()
+			audio.setAttribute("data-p", "hidup")
+		}else{
+			audio.play()
+			audio.setAttribute("data-p", "mati")
+		}
+		
+	}
+	
+		let f = (b) => {
+        h()
+				g.style.letterSpacing = "3px"
+				g.style.fontSize = "2.4em"
+			if(b){
+				e.style.display = "none"
+			}
+			if(b.value == 'senyum'){
+				a.style.backgroundColor = "transparent"
+				a.style.bottom = "20%" 
+				a.style.height = "90px"
+				a.style.borderBottom = "25px solid red"
+				a.style.borderTop = "none"
+				a.style.borderRadius = "50%"
+				c[0].style.height = "50px"
+				c[0].style.width = "50px"
+				c[0].style.borderRadius = "50%"
+				c[1].style.height = "50px"
+				c[1].style.width = "50px"
+				c[1].style.borderRadius = "50%"
+				d.style.backgroundColor = "#FFFFD0"
+				g.innerText = b.value
+				g.style.textTransform = "uppercase"
+			}else if(b.value == 'ragu'){
+				a.style.backgroundColor = "red"
+				a.style.bottom = "20%" 
+				a.style.height = "30px"
+				a.style.borderBottom = "none"
+				a.style.borderRadius = "20px"
+				c[0].style.height = "20px"
+				c[0].style.width = "70px"
+				c[0].style.borderRadius = "20px"
+				c[1].style.height = "20px"
+				c[1].style.width = "70px"
+				c[1].style.borderRadius = "20px"
+				d.style.backgroundColor = "#877f9b"
+				g.innerText = b.value
+				g.style.textTransform = "uppercase"
+			}else{
+				a.style.backgroundColor = "transparent"
+				a.style.bottom = "5%" 
+				a.style.height = "90px"
+				a.style.borderTop = "25px solid red"
+				a.style.borderRadius = "50%"
+				a.style.borderBottom = "none"
+				c[0].style.height = "60px"
+				c[0].style.width = "20px"
+				c[0].style.borderRadius = "20px"
+				c[1].style.height = "60px"
+				c[1].style.width = "20px"
+				c[1].style.borderRadius = "20px"
+				d.style.backgroundColor = "#4f6988"
+				g.innerText = b.value
+				g.style.textTransform = "uppercase"
+			}
+		}
+	</script>
+</body>
+</html>
